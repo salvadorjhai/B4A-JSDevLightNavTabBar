@@ -1,0 +1,135 @@
+﻿Build1=Default,b4a.example
+File1=Diploma_48px.png
+File2=Flag Filled _48px.png
+File3=Medal First Place_48px.png
+File4=Novel_48px.png
+File5=Trophy_48px.png
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+Group=Default Group
+Library1=core
+Library2=jsdevlightnavtabbar
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=5
+NumberOfLibraries=2
+NumberOfModules=1
+Version=10.7
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	'Activity.LoadLayout("Layout1")
+	Activity.Color = 0xFF413550
+	
+	' Initialize TabBar and add it to activity
+	Dim navigationTabBar As JSDevLightNavTabBar
+	navigationTabBar.Initialize("")
+	Activity.AddView(navigationTabBar, 0dip, 0dip, 100%x, 56dip)
+	
+	' Create Models (tabs), use BitmapDrawable for the icons
+	Dim bd1 As BitmapDrawable
+	bd1.Initialize(LoadBitmap(File.DirAssets, "Novel_48px.png"))
+	Dim model1 As JSDevLightNavTabBarModel	
+	model1.Initialize(bd1, 0xFFDE5853)
+	model1.Title = "Heart"
+	model1.BadgeTitle = "NTB"	
+	navigationTabBar.AddModel(model1)	' Add model to TabBar
+	
+	Dim bd2 As BitmapDrawable
+	bd2.Initialize(LoadBitmap(File.DirAssets, "Trophy_48px.png"))
+	Dim model2 As JSDevLightNavTabBarModel	
+	model2.Initialize(bd2, 0xFFF7B970)
+	model2.Title = "Cup"
+	model2.BadgeTitle = "with"	
+	navigationTabBar.AddModel(model2) ' Add model to TabBar
+	
+	Dim bd3 As BitmapDrawable
+	bd3.Initialize(LoadBitmap(File.DirAssets, "Diploma_48px.png"))
+	Dim model3 As JSDevLightNavTabBarModel	
+	model3.Initialize(bd3, 0xFF76ACCF)
+	model3.Title = "Diploma"
+	model3.BadgeTitle = "state"	
+	navigationTabBar.AddModel(model3)
+	
+	Dim bd4 As BitmapDrawable
+	bd4.Initialize(LoadBitmap(File.DirAssets, "Flag Filled _48px.png"))
+	Dim model4 As JSDevLightNavTabBarModel	
+	model4.Initialize(bd4, 0xFFDD6396)
+	model4.Title = "Flag"
+	model4.BadgeTitle = "icon"	
+	navigationTabBar.AddModel(model4)
+	
+	Dim bd5 As BitmapDrawable
+	bd5.Initialize(LoadBitmap(File.DirAssets, "Medal First Place_48px.png"))
+	Dim model5 As JSDevLightNavTabBarModel	
+	model5.Initialize(bd5, 0xFF71D1B4)
+	model5.Title = "Medal"
+	model5.BadgeTitle = "777"	
+	navigationTabBar.AddModel(model5)	
+		
+	navigationTabBar.SetModels
+	
+	navigationTabBar.TitleMode = navigationTabBar.TITLE_MODE_ACTIVE
+	navigationTabBar.BadgeGravity = navigationTabBar.BADGE_GRAVITY_BOTTOM
+	navigationTabBar.BadgePosition = navigationTabBar.BADGE_POSITION_CENTER
+	navigationTabBar.Typeface = Typeface.DEFAULT
+	'navigationTabBar.IsBadged = True
+	'navigationTabBar.IsTitled = True
+	'navigationTabBar.IsTinted = True
+	navigationTabBar.IsBadgeUseTypeface = True
+	navigationTabBar.BadgeBgColor = Colors.RED
+	navigationTabBar.BadgeTitleColor = Colors.WHITE
+	navigationTabBar.IsSwiped = True 
+	navigationTabBar.BgColor = 0xFF5F5071
+	navigationTabBar.BadgeSize = 10
+	navigationTabBar.TitleSize = 10
+	navigationTabBar.IconSizeFraction = 0.5	
+
+	' set active model (tab)
+	navigationTabBar.ModelIndex = 0
+	
+	' set view pager, like AHViewPager
+	'navigationTabBar.ViewPager = AHVIEWPAGER
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub navigationTabBar_OnEndTabSelected(model As JSDevLightNavTabBarModel, index As Int)
+	LogColor(model.Title, Colors.Blue)
+End Sub

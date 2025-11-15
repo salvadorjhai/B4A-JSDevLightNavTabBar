@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <doclet-version-NOT-library-version>1.05</doclet-version-NOT-library-version>
+    <class>
+        <name>com.salvadorjhai.widgets.JSDevLightNavTabBarModel</name>
+        <shortname>JSDevLightNavTabBarModel</shortname>
+        <objectwrapper>com.gigamole.navigationtabbar.ntb.NavigationTabBar.Model</objectwrapper>
+        <owner>process</owner>
+        <method>
+            <name>Initialize</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>icon</name>
+                <type>android.graphics.drawable.Drawable</type>
+            </parameter>
+            <parameter>
+                <name>color</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>ShowBadge</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>HideBadge</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>UpdateBadgeTitle</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>badgeTitle</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <method>
+            <name>ToggleBadge</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>Initialize2</name>
+            <comment></comment>
+            <returntype>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>builder</name>
+                <type>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</type>
+            </parameter>
+        </method>
+        <method>
+            <name>IsInitialized</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+        <property>
+            <name>BadgeTitle</name>
+            <returntype>java.lang.String</returntype>
+            <parameter>
+                <name>badgeTitle</name>
+                <type>java.lang.String</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Title</name>
+            <returntype>java.lang.String</returntype>
+            <parameter>
+                <name>title</name>
+                <type>java.lang.String</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>IsBadgeShowed</name>
+            <returntype>boolean</returntype>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Color</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>color</name>
+                <type>int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+    </class>
+    <class>
+        <name>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</name>
+        <shortname>JSDevLightNavTabBarModelBuilder</shortname>
+        <objectwrapper>com.gigamole.navigationtabbar.ntb.NavigationTabBar.Model.Builder</objectwrapper>
+        <owner>process</owner>
+        <method>
+            <name>Initialize</name>
+            <comment></comment>
+            <returntype>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</returntype>
+            <parameter>
+                <name>icon</name>
+                <type>android.graphics.drawable.Drawable</type>
+            </parameter>
+            <parameter>
+                <name>color</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>selectedIcon</name>
+            <comment></comment>
+            <returntype>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</returntype>
+            <parameter>
+                <name>icon</name>
+                <type>android.graphics.drawable.Drawable</type>
+            </parameter>
+        </method>
+        <method>
+            <name>title</name>
+            <comment></comment>
+            <returntype>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</returntype>
+            <parameter>
+                <name>title</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <method>
+            <name>build</name>
+            <comment></comment>
+            <returntype>com.gigamole.navigationtabbar.ntb.NavigationTabBar.Model</returntype>
+        </method>
+        <method>
+            <name>badgeTitle</name>
+            <comment></comment>
+            <returntype>com.salvadorjhai.widgets.JSDevLightNavTabBarModel.ModelBuilder</returntype>
+            <parameter>
+                <name>title</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <method>
+            <name>IsInitialized</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+    </class>
+    <class>
+        <name>com.salvadorjhai.widgets.JSDevLightNavTabBar</name>
+        <shortname>JSDevLightNavTabBar</shortname>
+        <comment>Wrapped Of: https://github.com/DevLight-Mobile-Agency/NavigationTabBar
+ Credits to: DevLight-Mobile-Agency
+ 
+ Usage:&lt;code&gt;
+ 	' Initialize TabBar and add it to activity
+ 	Dim navigationTabBar As JSDevLightNavTabBar
+ 	navigationTabBar.Initialize("")
+ 	Activity.AddView(navigationTabBar, 0dip, 0dip, 100%x, 56dip)
+ 	
+ 	' Create Models (tabs), use BitmapDrawable for the icons
+ 	Dim bd1 As BitmapDrawable
+ 	bd1.Initialize(LoadBitmap(File.DirAssets, "Novel_48px.png"))
+ 	Dim model1 As JSDevLightNavTabBarModel	
+ 	model1.Initialize(bd1, 0xFFDE5853)
+ 	model1.Title = "Heart"
+ 	model1.BadgeTitle = "NTB"	
+ 	navigationTabBar.AddModel(model1)	' Add model to TabBar
+ 	
+ 	Dim bd2 As BitmapDrawable
+ 	bd2.Initialize(LoadBitmap(File.DirAssets, "Trophy_48px.png"))
+ 	Dim model2 As JSDevLightNavTabBarModel	
+ 	model2.Initialize(bd2, 0xFFF7B970)
+ 	model2.Title = "Cup"
+ 	model2.BadgeTitle = "with"	
+ 	navigationTabBar.AddModel(model2) ' Add model to TabBar
+ 	
+ 	Dim bd3 As BitmapDrawable
+ 	bd3.Initialize(LoadBitmap(File.DirAssets, "Diploma_48px.png"))
+ 	Dim model3 As JSDevLightNavTabBarModel	
+ 	model3.Initialize(bd3, 0xFF76ACCF)
+ 	model3.Title = "Diploma"
+ 	model3.BadgeTitle = "state"	
+ 	navigationTabBar.AddModel(model3)
+ 	
+ 	Dim bd4 As BitmapDrawable
+ 	bd4.Initialize(LoadBitmap(File.DirAssets, "Flag Filled _48px.png"))
+ 	Dim model4 As JSDevLightNavTabBarModel	
+ 	model4.Initialize(bd4, 0xFFDD6396)
+ 	model4.Title = "Flag"
+ 	model4.BadgeTitle = "icon"	
+ 	navigationTabBar.AddModel(model4)
+ 	
+ 	Dim bd5 As BitmapDrawable
+ 	bd5.Initialize(LoadBitmap(File.DirAssets, "Medal First Place_48px.png"))
+ 	Dim model5 As JSDevLightNavTabBarModel	
+ 	model5.Initialize(bd5, 0xFF71D1B4)
+ 	model5.Title = "Medal"
+ 	model5.BadgeTitle = "777"	
+ 	navigationTabBar.AddModel(model5)	
+ 	
+ 	' Finalize Models by calling SetModels function
+ 	navigationTabBar.SetModels
+ 	
+  ' Optional Configuration
+ 	navigationTabBar.TitleMode = navigationTabBar.TITLE_MODE_ACTIVE
+ 	navigationTabBar.BadgeGravity = navigationTabBar.BADGE_GRAVITY_BOTTOM
+ 	navigationTabBar.BadgePosition = navigationTabBar.BADGE_POSITION_CENTER
+ 	navigationTabBar.Typeface = Typeface.DEFAULT
+ 	navigationTabBar.IsBadged = True
+ 	navigationTabBar.IsTitled = True
+ 	navigationTabBar.IsTinted = True
+ 	navigationTabBar.IsBadgeUseTypeface = True
+ 	navigationTabBar.BadgeBgColor = Colors.RED
+ 	navigationTabBar.BadgeTitleColor = Colors.WHITE
+ 	navigationTabBar.IsSwiped = True 
+ 	navigationTabBar.BgColor = 0xFF5F5071
+ 	navigationTabBar.BadgeSize = 10
+ 	navigationTabBar.TitleSize = 10
+ 	navigationTabBar.IconSizeFraction = 0.5	
+ 
+ 	' Set active model (tab)
+ 	navigationTabBar.ModelIndex = 0
+ 	
+ 	' set view pager, like AHViewPager
+ 	'navigationTabBar.ViewPager = AHVIEWPAGER&lt;/code&gt;</comment>
+        <objectwrapper>com.gigamole.navigationtabbar.ntb.NavigationTabBar</objectwrapper>
+        <owner>activity</owner>
+        <event>OnStartTabSelected(model As JSDevLightNavTabBarModel, index As int)</event>
+        <event>OnEndTabSelected(model As JSDevLightNavTabBarModel, index As int)</event>
+        <method>
+            <name>BringToFront</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>RequestFocus</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>AddModel</name>
+            <comment>Adds the model.
+model: the model
+ 
+ Sample:&lt;code&gt;
+ Dim model1 As JSDevLightNavTabBarModel
+ Dim bd1 As BitmapDrawable
+ bd1.Initialize(LoadBitmap(File.DirAssets, "ic_home.png"))
+ model1.Initialize(bd1, 0xFFDE5853)
+ model1.Title = "Home"
+ navigationTabBar.AddModel(model1) ' Add model to TabBar
+ &lt;/code&gt;</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>model</name>
+                <type>com.salvadorjhai.widgets.JSDevLightNavTabBarModel</type>
+            </parameter>
+        </method>
+        <method>
+            <name>IsHidden</name>
+            <comment>Check if tab is hidden
+Return type: @return:returns true if hidden (using .Hide function)</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>GetModels</name>
+            <comment>Gets the models.
+Return type: @return:the list</comment>
+            <returntype>java.util.List</returntype>
+        </method>
+        <method>
+            <name>RemoveView</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>SetBackgroundImage</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>android.graphics.Bitmap</type>
+            </parameter>
+        </method>
+        <method>
+            <name>SetModels</name>
+            <comment>Call this after adding all your models.</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>Invalidate3</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg1</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg2</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg3</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>Hide</name>
+            <comment>Hide (ScrollDown).</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>Invalidate2</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>android.graphics.Rect</type>
+            </parameter>
+        </method>
+        <method>
+            <name>IsInitialized</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>Initialize</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>eventName</name>
+                <type>java.lang.String</type>
+            </parameter>
+        </method>
+        <method>
+            <name>Show</name>
+            <comment>Show (ScrollUp).</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>Deselect</name>
+            <comment>Deselect.</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>Invalidate</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>SetLayout</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg1</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg2</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg3</name>
+                <type Pixel="true">int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>DesignerCreateView</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>paramPanelWrapper</name>
+                <type>anywheresoftware.b4a.objects.PanelWrapper</type>
+            </parameter>
+            <parameter>
+                <name>paramLabelWrapper</name>
+                <type>anywheresoftware.b4a.objects.LabelWrapper</type>
+            </parameter>
+            <parameter>
+                <name>paramMap</name>
+                <type>anywheresoftware.b4a.objects.collections.Map</type>
+            </parameter>
+        </method>
+        <method>
+            <name>SetColorAnimated</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg1</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg2</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>SetLayoutAnimated</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg1</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg2</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg3</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <parameter>
+                <name>arg4</name>
+                <type Pixel="true">int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>SetVisibleAnimated</name>
+            <comment></comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>arg1</name>
+                <type>boolean</type>
+            </parameter>
+        </method>
+        <method>
+            <name>SendToBack</name>
+            <comment></comment>
+            <returntype>void</returntype>
+        </method>
+        <property>
+            <name>Enabled</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>boolean</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Visible</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>boolean</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Background</name>
+            <returntype>android.graphics.drawable.Drawable</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>android.graphics.drawable.Drawable</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>BadgeMargin</name>
+            <returntype>float</returntype>
+            <comment>Gets the badge margin.</comment>
+        </property>
+        <property>
+            <name>BadgePosition</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>badgePosition</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the badge position.</comment>
+        </property>
+        <property>
+            <name>IsTitled</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsTitled</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is titled.</comment>
+        </property>
+        <property>
+            <name>BadgeTitleColor</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>badgeTitleColor</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the badge title color.</comment>
+        </property>
+        <property>
+            <name>BadgeGravity</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>badgeGravity</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the badge gravity.</comment>
+        </property>
+        <property>
+            <name>BehaviorEnabled</name>
+            <parameter>
+                <name>IsBehaviorEnabled</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Sets the behavior enabled.</comment>
+        </property>
+        <property>
+            <name>Tag</name>
+            <returntype>java.lang.Object</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type>java.lang.Object</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>BarHeight</name>
+            <returntype>float</returntype>
+            <comment>Gets the bar height.</comment>
+        </property>
+        <property>
+            <name>IsSwiped</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsSwiped</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is swiped.</comment>
+        </property>
+        <property>
+            <name>Width</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>InactiveColor</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>inactiveColor</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the inactive color.</comment>
+        </property>
+        <property>
+            <name>ModelIndex</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>modelIndex</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the model index (active model).</comment>
+        </property>
+        <property>
+            <name>BgColor</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>bgColor</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the bg color.</comment>
+        </property>
+        <property>
+            <name>TitleMode</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>titleMode</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the title mode.</comment>
+        </property>
+        <property>
+            <name>Parent</name>
+            <returntype>java.lang.Object</returntype>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Top</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>IconSizeFraction</name>
+            <returntype>float</returntype>
+            <parameter>
+                <name>iconSizeFraction</name>
+                <type>float</type>
+            </parameter>
+            <comment>Gets the icon size fraction.</comment>
+        </property>
+        <property>
+            <name>IsBehaviorEnabled</name>
+            <returntype>boolean</returntype>
+            <comment>Gets the checks if is behavior enabled.</comment>
+        </property>
+        <property>
+            <name>ViewPager</name>
+            <parameter>
+                <name>viewPager</name>
+                <type>java.lang.Object</type>
+            </parameter>
+            <comment>Sets the view pager.</comment>
+        </property>
+        <property>
+            <name>IsBadgeUseTypeface</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsBadgeUseTypeface</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is badge use typeface.</comment>
+        </property>
+        <property>
+            <name>TitleSize</name>
+            <returntype>float</returntype>
+            <parameter>
+                <name>modelTitleSize</name>
+                <type>float</type>
+            </parameter>
+            <comment>Gets the title size.</comment>
+        </property>
+        <property>
+            <name>Height</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>BadgeBgColor</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>badgeBgColor</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the badge bg color.</comment>
+        </property>
+        <property>
+            <name>Left</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>arg0</name>
+                <type Pixel="true">int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>Color</name>
+            <parameter>
+                <name>arg0</name>
+                <type>int</type>
+            </parameter>
+            <comment></comment>
+        </property>
+        <property>
+            <name>AnimationDuration</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>animationDuration</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the animation duration.</comment>
+        </property>
+        <property>
+            <name>Typeface</name>
+            <returntype>android.graphics.Typeface</returntype>
+            <parameter>
+                <name>typeface</name>
+                <type>android.graphics.Typeface</type>
+            </parameter>
+            <comment>Gets the typeface.</comment>
+        </property>
+        <property>
+            <name>IsScaled</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsScaled</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is scaled.</comment>
+        </property>
+        <property>
+            <name>BadgeSize</name>
+            <returntype>float</returntype>
+            <parameter>
+                <name>badgeTitleSize</name>
+                <type>float</type>
+            </parameter>
+            <comment>Gets the badge size.</comment>
+        </property>
+        <property>
+            <name>CornersRadius</name>
+            <returntype>float</returntype>
+            <parameter>
+                <name>cornersRadius</name>
+                <type>float</type>
+            </parameter>
+            <comment>Gets the corners radius.</comment>
+        </property>
+        <property>
+            <name>IsBadged</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsBadged</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is badged.</comment>
+        </property>
+        <property>
+            <name>ActiveColor</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>activeColor</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the active color.</comment>
+        </property>
+        <property>
+            <name>IsTinted</name>
+            <returntype>boolean</returntype>
+            <parameter>
+                <name>IsTinted</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Gets the checks if is tinted.</comment>
+        </property>
+        <field>
+            <name>BADGE_POSITION_RIGHT</name>
+            <comment>The Constant BADGE_POSITION_RIGHT.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>BADGE_POSITION_LEFT</name>
+            <comment>The Constant BADGE_POSITION_LEFT.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>BADGE_GRAVITY_BOTTOM</name>
+            <comment>The Constant BADGE_GRAVITY_BOTTOM.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>TITLE_MODE_ACTIVE</name>
+            <comment>The Constant TITLE_MODE_ACTIVE.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>TITLE_MODE_ALL</name>
+            <comment>The Constant TITLE_MODE_ALL.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>BADGE_POSITION_CENTER</name>
+            <comment>The Constant BADGE_POSITION_CENTER.</comment>
+            <returntype>int</returntype>
+        </field>
+        <field>
+            <name>BADGE_GRAVITY_TOP</name>
+            <comment>The Constant BADGE_GRAVITY_TOP.</comment>
+            <returntype>int</returntype>
+        </field>
+    </class>
+    <version>0.3</version>
+    <author>salvadorjhai</author>
+    <dependsOn>JSDevLightNavTabBar.aar</dependsOn>
+    <dependsOn>android-support-v4</dependsOn>
+    <dependsOn>android-support-design</dependsOn>
+    <dependsOn>JSDevLightNavTabBar.aar</dependsOn>
+    <dependsOn>android-support-v4</dependsOn>
+    <dependsOn>android-support-design</dependsOn>
+</root>
